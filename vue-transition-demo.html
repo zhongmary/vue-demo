@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-transition-demo</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <style>
+        button {
+            background-color: #ff6000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .contain {
+            display: inline-block;
+            width: 300px;
+            height: 300px;
+            background-color: #efefef;
+            border: 1px solid #ccc;
+        }
+
+        .box {
+            background-color: green;
+            width:300px;
+            height: 300px;
+        }
+        /*动画效果*/
+        .box-enter-active,.box-leave-active{
+            transition:all .8s;
+        }
+        .box-enter{
+            opacity: 0;
+            margin-left:100%;
+            width:0;
+        }
+        .box-leave-active{
+            opacity: 0;
+            margin-left: 100%;
+            width:0;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <button @click="isShow=!isShow">切换</button>
+    <div class="contain">
+        <transition name="box">
+            <div class="box" v-show="isShow"></div>
+        </transition>
+    </div>
+</div>
+</body>
+<script>
+    var demo=new Vue({
+        el:'#demo',
+        data:{
+            isShow:false
+        },
+        methods:{
+
+        }
+    });
+</script>
+</html>

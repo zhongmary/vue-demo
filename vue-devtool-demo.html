@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-devtool-demo</title>
+    <script src="https://unpkg.com/vue@2.3.3/dist/vue.js"></script>
+    <style>
+        input{
+            width:50px;
+        }
+        #demo{
+            line-height: 35px;
+        }
+        button{
+            background-color: #ff6000;
+            color:#fff;
+            border:none;
+            border-radius: 5px;
+            padding:5px;
+            cursor: pointer;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <div><input type="text" v-model="num1">+<input type="text" v-model="num2">=<input type="text" v-model="sum===0?'':sum"></div>
+    <div><button @click="reset">清空数据</button></div>
+</div>
+</body>
+<script>
+    var demo=new Vue({
+        el:'#demo',
+        data:{
+            num1:'',
+            num2:'',
+        },
+        computed:{
+            sum(){
+                return Number(this.num1)+Number(this.num2);
+            }
+        },
+        methods:{
+            reset(){
+               this.sum= this.num1=this.num2='';
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>vue-router-demo</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-size: 0;
+        }
+
+        .nav {
+            width: 100%;
+            text-align: center;
+        }
+
+        .nav a {
+            display: inline-block;
+            width: 33%;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 45px;
+            color:#000;
+
+        }
+
+        .nav a.router-link-active {
+            color: #417fba;
+            border-bottom: 2px solid #417fba;
+        }
+        .content>div{
+            font-size: 14px;
+            height:200px;
+            text-align: center;
+            line-height: 200px;
+            color:#ff6000;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <div class="nav">
+        <!--使用router-link导航，to属性设置连接地址-->
+        <router-link to="/to-do">待面试</router-link>
+        <router-link to="/do">已面试</router-link>
+        <router-link to="/all-do">全部</router-link>
+    </div>
+    <div class="content">
+        <router-view></router-view>
+    </div>
+</div>
+</body>
+<script>
+    //第一步：设置视图组件
+    const toDoComponent = {
+        template: `<div>【待面试】对应的视图组件</div>`
+    };
+    const doComponent = {
+        template: `<div>【已面试】对应的视图组件</div>`
+    };
+    const allDoComponent = {
+        template: `<div>【全部】对应的视图组件</div>`
+    };
+    //创建router实例，并定义导航和组件的映射关系
+    let router = new VueRouter({
+        routes: [
+            {path: '/to-do', component: toDoComponent},
+            {path: '/do', component: doComponent},
+            {path: '/all-do', component: allDoComponent}
+        ]
+    });
+    //第三步：创建vue实例，注入路由router
+    let demo = new Vue({
+        el: '#demo',
+        router//相当于router:router
+    });
+</script>
+</html>
