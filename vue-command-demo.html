@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-command-demo</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <!--1、{{}}   v-html   v-text-->
+    <p>{{msg}}</p>
+    <p v-text="msg"></p>
+    <p v-html="msg"></p>
+    <!--2、v-show  v-if-->
+    <p v-show="show1">我是v-show-true</p>
+    <p v-show="show2">我是v-show-false</p>
+    <p v-if="if1">我是v-if-true</p>
+    <p v-if="if2">我是v-if-false</p>
+    <!--3、v-if和v-else使用-->
+    <p v-if="if3">我是v-if-true</p>
+    <p v-else>我是v-else</p>
+    <!--4、v-for-->
+    <ul v-for="item in arr">
+        <li>{{item}}</li>
+    </ul>
+    <ul v-for="(item,index) in arr"><!--item为内容的别名  index为序列的别名-->
+        <li>{{index}}-{{item}}</li>
+    </ul>
+    <!--v-bind-->
+    <a v-bind:href="link" target="_blank">百度一下</a>
+    <!--v-on-->
+    <div><span>{{num}}</span><button v-on:click="add">点我加1</button></div>
+    <!--v-model-->
+    <div><input type="text" v-model="txt"></div>
+    <div>输入内容为：{{txt}}</div>
+    <!--v-once-->
+    <div><input type="text" v-model="txt1" v-once></div>
+    <div>输入内容为：{{txt1}}</div>
+</div>
+</body>
+<script>
+    var demo=new Vue({
+        el:'#demo',
+        data:{
+            msg:'<h4>vue-command-demo学习</h4>',
+            show1:true,
+            show2:false,
+            if1:true,
+            if2:false,
+            if3:true,
+            arr:['音乐','跑步','旅游','骑行'],
+            link:'https://www.baidu.com/',
+            num:0,
+            txt:'',
+            txt1:'v-once只更新一次'
+        },
+        methods:{
+            add(){
+                return this.num++;
+            }
+        }
+    })
+</script>
+</html>

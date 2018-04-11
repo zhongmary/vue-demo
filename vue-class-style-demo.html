@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-css-style-demo</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <p :class="{'active':isActive,'error':isError}"  :style="{color:colorStyle}">对象方式动态添加class</p>
+    <p :class="[activeClass,errorClass]" :style="styleObj">数组方式动态添加class</p>
+    <p :class="[activeClass,errorClass]" :style="[styleObj ,styleObj2]">数组方式动态添加class</p>
+</div>
+</body>
+<script>
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            isActive: true,
+            isError:false,
+            activeClass:'active',
+            errorClass:'error',
+            colorStyle:'red',
+            styleObj:{
+                color:'red',
+                fontSize:'12px'
+            },
+            styleObj2:{
+              textDecoration:'underline'
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-component-demo</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .article {
+            border: 1px solid #efefef;
+            display: inline-block;
+            line-height: 30px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .article span {
+            color: #ccc;
+            display: block;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <article-list v-for="item in article" :detail="item"></article-list>
+</div>
+</body>
+<script>
+    Vue.component('article-list', {
+        props: ['detail'], /*props属性：父组件向子组件传递参数，可以把detail理解为一个形参，article理解为一个实参*/
+        template: `<div class="article">
+                                  <h3>{{detail.title}}</h3>
+                                  <span>{{detail.date}}</span>
+                                  <div>{{detail.content}}</div>
+                                  </div>`
+    })
+    ;
+    let demo = new Vue({
+        el: '#demo',
+        data: {
+            article: [
+                {
+                    title: '标题1',
+                    date: '2018-04-08',
+                    content: '这是第一个内容简介'
+                }, {
+                    title: '标题2',
+                    date: '2018-03-08',
+                    content: '这是第二个内容简介'
+                },{
+                    title: '标题3',
+                    date: '2018-02-08',
+                    content: '这是第三个内容简介'
+                }
+            ]
+        }
+    });
+
+</script>
+</html>
